@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./models/user');
-// const { PythonShell } = require("python-shell")
 const { spawn } = require("child_process");
 const path = require('path');
 
@@ -18,26 +17,23 @@ const server = () => {
     app.use(cors());
     app.use(express.json());
 
-    app.use(function (req, res, next) {
-        console.log('Time:', Date.now(), req.method, req.url);
+    app.use(function (req, _res, next) {
+        console.log(req.method, req.url);
         next();
     })
 
-    app.get('/', (req, res) => {
-        
-        const script = path.join(path.dirname(path.dirname(__dirname)),'/','python','test.py')
-
-        const pythonProcess = spawn('python3', [script]);
-
-        pythonProcess.stdout.on('data', (data) => {
-            res.write(data)
-        })
-
-        pythonProcess.on("close", (code) => {
-            console.log(`${code}`)
-            res.end()
-        })
-    });
+    app.post('/login', async (req, res) => {
+        try {
+            const { email, password } = req.body;
+            const user = await User.findOne({ email: email, password: password })
+            if (!user) {
+                res.status(401).json({ error: "User not found" })
+            }
+            res.status(200).json(user)
+        } catch (err) {
+            res.status(400).json({ error: err })
+        }
+    })
 
     app.post('/users', async (req, res) => {
 
@@ -73,10 +69,6 @@ const server = () => {
 
             let users = await User.find({});
 
-            // for (let i = 0; i < users.length; i++) {
-            //     users[i]._id = users[i]._id.toString();
-            //     console.log(users[i]._id.toString());
-            // }
             users = JSON.stringify(users);
 
             const script = path.join(path.dirname(path.dirname(__dirname)),'/','python','scripts','match.py')
