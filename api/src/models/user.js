@@ -7,8 +7,9 @@ const userSchema = new Schema({
     password: { type: String, required: true},
     year: { type: Number, required: true },
     major: { type: String, required: true },
-    //interests: [String],
-    //social: String
+    interests: { type: [String], required: true }, 
+    classes: { type: [String], required: true },
+    matches: { type: [String], required: false },
 });
 
 userSchema.set('toJSON', {
