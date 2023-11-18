@@ -11,19 +11,7 @@ function App() {
 
   return (
     <>
-      <nav>
-        <ul>
-          <li>
-            <Link to="/chat">Chat</Link>
-          </li>
-          <li>
-            <Link to="/profile">Profile</Link>
-          </li>
-          <li>
-            <Link to="/matches">Matches</Link>
-          </li>
-        </ul>
-      </nav>
+
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/chat" element={<Chat />} />
