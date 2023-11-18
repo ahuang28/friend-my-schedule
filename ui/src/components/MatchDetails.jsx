@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom"
 import './Matches.css'
 import { Avatar, Button, Chip } from "@nextui-org/react"
-import { ChevronLeftIcon } from "@radix-ui/react-icons"
+import { ChevronLeftIcon, InstagramLogoIcon } from "@radix-ui/react-icons"
 
 export function MatchDetails() {
     const { id } = useParams()
@@ -13,10 +13,6 @@ export function MatchDetails() {
                     <div className="py-[72px] px-2">
                         {/* Back */}
                         <div className="flex flex-row items-center">
-                            {/* <img className="w-[9px] h-[9px]" alt="Back Arrow" src="/src/assets/back.svg" />
-                            <div className="ml-2 [font-family:'Inter-Regular',Helvetica] font-normal text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
-                                Back
-                            </div> */}
                             <Button variant="light" className="[font-family:'Inter-Regular',Helvetica] text-[#00274c] font-bold" startContent={<ChevronLeftIcon/>}>
                                 Back
                             </Button>
@@ -33,14 +29,15 @@ export function MatchDetails() {
                                     Brandon Wonga
                                 </div>
                                 <div className="mt-3 flex flex-row items-center gap-5">
-                                    <img className="w-[30px] h-[30px]" alt="Instagram" src="/src/assets/instagram.svg" />
+                                    <img className="w-[30px] h-[30px]" alt="Instagram" src="/src/assets/instagram.svg" /> 
                                     <img className="w-[30px] h-[30px]" alt="Facebook" src="/src/assets/facebook.svg" />
+                                    {/* <InstagramLogoIcon className="w-[30px] h-[30px] fill=#00274c"/> */}
                                 </div>
                                 <div className="mt-5 w-full flex flex-row justify-between">
                                     <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
                                         Year
                                     </div>
-                                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+                                    <div className="[font-family:'Inter-Regular',Helvetica] font-bold text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
                                         U4
                                     </div>
                                 </div>
@@ -48,7 +45,7 @@ export function MatchDetails() {
                                     <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
                                         Major
                                     </div>
-                                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+                                    <div className="[font-family:'Inter-Regular',Helvetica] font-bold text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
                                         Software Engineering
                                     </div>
                                 </div>
