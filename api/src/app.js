@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const User = require('./models/user');
 
 require('dotenv').config();
 const app = express();
@@ -20,6 +21,19 @@ const server = () => {
 
     app.get('/', (req, res) => {
         res.send('Hello World');
+    });
+
+    app.post('/users', async (req, res) => {
+
+        try {
+            console.log(req.body)
+            const user = new User(req.body);
+            user = await user.save(user);
+            res.status(201).json(user);
+        } catch {
+            console.log(req.body);
+            res.status(400).json({ error: 'Invalid request' });
+        }
     });
 
     app.listen(3000, () => {
