@@ -46,3 +46,61 @@ function Login() {
 }
 
 export default Login
+
+
+import React from "react";
+
+export const MatchesDetails = () => {
+  return (
+    <div className="bg-white flex flex-row justify-center w-full">
+      <div className="bg-white [background:linear-gradient(180deg,rgb(254,205,249)_6.36%,rgb(248,243,237)_26.77%,rgb(251,152,4)_48.51%,rgba(64,139,252,0.7)_80.81%)] w-[390px] h-[844px] relative">
+        <div className="absolute w-[390px] h-[732px] top-[112px] left-0">
+          <img className="absolute w-[390px] h-[679px] top-[53px] left-0" alt="Ellipse" src="ellipse-13.svg" />
+          <div className="absolute w-[351px] h-[540px] top-[120px] left-[21px] rounded-[16px] shadow-[0px_4px_24px_-1px_#00000033] backdrop-blur-2xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40px)_brightness(100%)] [background:linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(217,217,217,0.1)_100%)]" />
+          {/* <img
+            className="absolute w-[35px] h-[35px] top-[210px] left-[203px]"
+            alt="Ic baseline facebook"
+            src="ic-baseline-facebook.svg"
+          /> */}
+          <div className="absolute w-[156px] h-[156px] top-0 left-[118px] bg-[#918e8e] rounded-[78px]" />
+          {/* <img className="absolute w-[30px] h-[30px] top-[213px] left-[152px]" alt="Vector" src="vector.svg" /> */}
+          {/* <div className="top-[175px] left-[117px] [font-family:'Inter-Bold',Helvetica] font-bold text-[20px] absolute text-black tracking-[0] leading-[normal] whitespace-nowrap">
+            Brandon Wonga
+          </div> */}
+          <div className="absolute top-[269px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+            Year
+          </div>
+          <div className="absolute top-[269px] left-[316px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+            U4
+          </div>
+          <div className="top-[305px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-[16px] absolute text-black tracking-[0] leading-[normal] whitespace-nowrap">
+            Major
+          </div>
+          <div className="absolute top-[305px] left-[177px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+            Software Engineering
+          </div>
+          <div className="absolute top-[341px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+            Courses
+          </div>
+          <div className="absolute top-[474px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+            Interests
+          </div>
+          <div className="absolute w-[103px] h-[36px] top-[371px] left-[51px] bg-[#918e8e] rounded-[32px]" />
+          <div className="absolute w-[103px] h-[36px] top-[371px] left-[163px] bg-[#918e8e] rounded-[32px]" />
+          <div className="absolute w-[83px] h-[36px] top-[371px] left-[276px] bg-[#918e8e] rounded-[32px]" />
+          <div className="absolute w-[134px] h-[36px] top-[419px] left-[51px] bg-[#918e8e] rounded-[32px]" />
+          <div className="absolute w-[134px] h-[36px] top-[419px] left-[199px] bg-[#918e8e] rounded-[32px]" />
+          <div className="absolute w-[103px] h-[36px] top-[504px] left-[51px] bg-[#918e8e] rounded-[32px]" />
+          <div className="absolute w-[103px] h-[36px] top-[504px] left-[163px] bg-[#918e8e] rounded-[32px]" />
+          <div className="absolute w-[83px] h-[36px] top-[504px] left-[276px] bg-[#918e8e] rounded-[32px]" />
+          <div className="absolute w-[134px] h-[36px] top-[552px] left-[51px] bg-[#918e8e] rounded-[32px]" />
+          <div className="absolute w-[134px] h-[36px] top-[552px] left-[199px] bg-[#918e8e] rounded-[32px]" />
+        </div>
+        {/* <img className="absolute w-[10px] h-[11px] top-[92px] left-[35px]" alt="Vector" src="vector-1.svg" /> */}
+        {/* <div className="absolute top-[87px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+          Back
+        </div> */}
+      </div>
+    </div>
+  );
+};
