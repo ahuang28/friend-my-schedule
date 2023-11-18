@@ -35,6 +35,43 @@ const server = () => {
         }
     });
 
+    //update user given id and new data 
+
+    //generate match using python script in python/script folder
+
+    app.get('/users/:id/match', async (req, res) => {
+        try { 
+             const user = await User.findById(req.params.id);
+                if (!user) {
+                    return res.status(404).json({ error: 'User not found' });
+                }
+
+            const users = await User.find({});
+            
+            const { spawn } = require('child_process');
+
+            const pythonProcess = spawn('python', ['../../python/scripts/match.py', arg1, arg2]);
+
+
+
+        } catch {
+            res.status(400).json({ error: 'Invalid request' });
+        }
+    });
+
+    //get user by id 
+    app.get('/users/:id', async (req, res) => {
+        try { 
+             const user = await User.findById(req.params.id);
+                if (!user) {
+                    return res.status(404).json({ error: 'User not found' });
+                }
+                res.json(user);
+        } catch {
+            res.status(400).json({ error: 'Invalid request' });
+        }
+    });
+
     app.listen(3000, () => {
         console.log('Server is running on port 3000');
     });
