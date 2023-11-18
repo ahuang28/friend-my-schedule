@@ -2,6 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./models/user');
+// const { PythonShell } = require("python-shell")
+const { spawn } = require("child_process");
+const path = require('path');
 
 require('dotenv').config();
 const app = express();
@@ -21,7 +24,33 @@ const server = () => {
     })
 
     app.get('/', (req, res) => {
-        res.send('Hello World');
+        // PythonShell.run("/../python/test.py", null, (err, result) => {
+        //     if (err) console.log(err)
+        //     else console.log(result)
+        // })
+        const script = path.join(path.dirname(path.dirname(__dirname)),'/','python','test.py')
+
+        const pythonProcess = spawn('python3', [script]);
+
+        pythonProcess.stdout.on('data', (data) => {
+            res.write(data)
+        })
+
+        // pythonProcess.stderr.on("data", (data) => {
+        //     console.log(`${data}`)
+        // })
+
+        pythonProcess.on("close", (code) => {
+            console.log(`${code}`)
+            res.end()
+        })
+        // const pid = pythonProcess.pid;
+        // pythonProcess.kill(pid)
+        // try {
+        // } catch {
+        //     console.log("LMAO")
+        // }
+
     });
 
     app.post('/users', async (req, res) => {
