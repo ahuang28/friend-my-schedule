@@ -1,7 +1,13 @@
+import NavBar from "./NavBar"
+
 function Profile() {
     return (
         <>
-            <div>Profile</div>
+            <div className="w-screen h-screen">
+                <div className="w-full h-full">
+                </div>
+                <NavBar />
+            </div>
         </>
     )
 }

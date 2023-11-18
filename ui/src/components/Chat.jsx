@@ -1,7 +1,13 @@
+import NavBar from "./NavBar"
+
 function Chat() {
     return (
         <>
-            <div>Chat</div>
+            <div className="w-screen h-screen">
+                <div className="w-full h-full">
+                </div>
+                <NavBar />
+            </div>
         </>
     )
 }
