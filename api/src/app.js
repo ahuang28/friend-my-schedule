@@ -36,6 +36,19 @@ const server = () => {
     });
 
     //update user given id and new data 
+    app.patch('/users/:id', async (req, res) => {
+        try {
+            const { id } = req.params;
+            const updatedUser = req.body;
+
+            const user = await User.findByIdAndUpdate(id, updatedUser, { new: true });
+
+            res.json(user);
+        } catch (err) {
+            console.log(err)
+            res.status(400).json({ error: err });
+        }
+    })
 
     //generate match using python script in python/script folder
 
