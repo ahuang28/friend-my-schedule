@@ -1,4 +1,11 @@
 import { Route, Routes, Link } from "react-router-dom"
+import Login from "./components/Login"
+import Chat from "./components/Chat"
+import ChatDetails from "./components/ChatDetails"
+import Profile from "./components/Profile"
+import Matches from "./components/Matches"
+import MatchDetails from "./components/MatchDetails"
+import Error from "./components/Error"
 
 function App() {
 
@@ -18,13 +25,13 @@ function App() {
         </ul>
       </nav>
       <Routes>
-        <Route path="/" element={<div>Hello World</div>} />
-        <Route path="/chat" element={<div>Chat</div>} />
-        <Route path="/profile" element={<div>Profile</div>} />
-        <Route path="/matches">
-          <Route index element={<div>Matches</div>} />
-        </Route>
-        <Route path="*" element={<div>404 Error Page</div>}/>
+        <Route path="/" element={<Login />} />
+        <Route path="/chat" element={<Chat />} />
+        <Route path="/chat/:id" element={<ChatDetails />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/matches" element={<Matches />} />
+        <Route path="/matches/:id" element={<MatchDetails />} />
+        <Route path="*" element={<Error />}/>
       </Routes>
     </>
   )
