@@ -104,3 +104,75 @@ export const MatchesDetails = () => {
     </div>
   );
 };
+
+import React from "react";
+
+export const Profile = () => {
+  return (
+    <div className="bg-white flex flex-row justify-center w-full">
+      <div className="bg-white [background:linear-gradient(180deg,rgb(64,139,252)_10.95%,rgb(248,243,237)_35.73%,rgb(252.2,182.9,79.3)_67.33%,rgb(254,205,249)_100%)] w-[390px] h-[918px]">
+        <div className="relative h-[866px] top-[52px]">
+          <img className="absolute w-[390px] h-[753px] top-[113px] left-0" alt="Ellipse" src="ellipse-13.svg" />
+          <div className="absolute w-[185px] h-[56px] top-[720px] left-[102px] rounded-[32px] border border-solid border-[#00284c]" />
+          <div className="absolute w-[357px] h-[680px] top-0 left-[17px] rounded-[16px] shadow-[0px_4px_24px_-1px_#00000033] backdrop-blur-2xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40px)_brightness(100%)] [background:linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(217,217,217,0.1)_100%)]" />
+          <div className="absolute w-[390px] h-[74px] top-[792px] left-0 bg-[#e2ceb599]" />
+          <div className="absolute top-[21px] left-[159px] [font-family:'Inter-Regular',Helvetica] font-normal text-text text-[24px] tracking-[0] leading-[normal]">
+            Profile
+          </div>
+          <div className="absolute w-[328px] h-[52px] top-[71px] left-[31px] bg-[#ffffffb2] rounded-[32px]" />
+          <div className="absolute top-[88px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]">
+            Name
+          </div>
+          <div className="absolute w-[328px] h-[52px] top-[143px] left-[31px] bg-[#ffffffb2] rounded-[32px]" />
+          <div className="absolute w-[328px] h-[52px] top-[215px] left-[31px] bg-[#ffffffb2] rounded-[32px]" />
+          <div className="absolute w-[328px] h-[52px] top-[287px] left-[31px] bg-[#ffffffb2] rounded-[32px]" />
+          <div className="absolute w-[328px] h-[52px] top-[359px] left-[31px] bg-[#ffffffb2] rounded-[32px]" />
+          <div className="absolute w-[328px] h-[44px] top-[620px] left-[31px] bg-[#00284c] rounded-[32px]" />
+          <div className="absolute top-[632px] left-[122px] [font-family:'Inter-Regular',Helvetica] font-normal text-white text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+            Save &amp; Generate
+          </div>
+          <div className="absolute w-[328px] h-[52px] top-[431px] left-[31px] bg-[#ffffffb2] rounded-[32px]" />
+          <div className="absolute w-[71px] h-[36px] top-[503px] left-[31px] bg-[#408bfcb2] rounded-[32px]" />
+          <div className="absolute w-[71px] h-[36px] top-[503px] left-[114px] bg-[#408bfcb2] rounded-[32px]" />
+          <div className="absolute w-[71px] h-[36px] top-[503px] left-[197px] bg-[#408bfcb2] rounded-[32px]" />
+          <div className="absolute w-[71px] h-[36px] top-[503px] left-[280px] bg-[#408bfcb2] rounded-[32px]" />
+          <div className="absolute w-[71px] h-[36px] top-[555px] left-[32px] bg-[#408bfcb2] rounded-[32px]" />
+          <div className="absolute w-[142px] h-[36px] top-[555px] left-[114px] bg-[#408bfcb2] rounded-[32px]" />
+          <div className="absolute top-[160px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]">
+            Email
+          </div>
+          <div className="absolute top-[232px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]">
+            Year
+          </div>
+          <div className="absolute top-[304px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]">
+            Major
+          </div>
+          <div className="absolute top-[376px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]">
+            Visual Studio Builder Link
+          </div>
+          <div className="absolute top-[448px] left-[51px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]">
+            Interests
+          </div>
+          <img
+            className="absolute w-[24px] h-[24px] top-[445px] left-[315px]"
+            alt="Iconamoon search"
+            src="iconamoon-search-bold.svg"
+          />
+          <div className="absolute w-[21px] h-[21px] top-[562px] left-[222px] bg-white rounded-[10.5px]" />
+          <img className="absolute w-[20px] h-[20px] top-[563px] left-[223px]" alt="Bi x" src="bi-x.svg" />
+          <div className="absolute top-[739px] left-[169px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#00284c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+            Logout
+          </div>
+          <div className="absolute top-[511px] left-[54px] [font-family:'Inter-Regular',Helvetica] font-normal text-[#00284c] text-[14px] tracking-[0] leading-[normal]">
+            Ball
+          </div>
+          <div className="inline-flex items-center justify-center gap-[84px] absolute top-[813px] left-[59px]">
+            <img className="h-[32.14px] relative w-[35px]" alt="Vector" src="vector.svg" />
+            <img className="relative w-[39px] h-[33.75px]" alt="Mask group" src="mask-group.svg" />
+            <img className="h-[35px] relative w-[35px]" alt="Vector" src="image.svg" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
