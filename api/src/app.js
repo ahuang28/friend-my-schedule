@@ -13,6 +13,7 @@ mongoose.connect(process.env.MONGO, { retryWrites: true, w: 'majority'}).then(()
 const server = () => {
 
     app.use(cors());
+    app.use(express.json());
 
     app.use(function (req, res, next) {
         console.log('Time:', Date.now(), req.method, req.url);
@@ -26,12 +27,10 @@ const server = () => {
     app.post('/users', async (req, res) => {
 
         try {
-            console.log(req.body)
             const user = new User(req.body);
-            user = await user.save(user);
+            await user.save(user);
             res.status(201).json(user);
         } catch {
-            console.log(req.body);
             res.status(400).json({ error: 'Invalid request' });
         }
     });
