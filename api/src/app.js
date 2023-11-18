@@ -50,8 +50,27 @@ const server = () => {
             
             const { spawn } = require('child_process');
 
-            const pythonProcess = spawn('python', ['../../python/scripts/match.py', arg1, arg2]);
+            const pythonProcess = spawn('python', ['../../python/scripts/match.py', user, users]);
+            
+            let pythonOutput = ''; // To store the output from Python
 
+            // Handle stdout
+            pythonProcess.stdout.on('data', (data) => {
+            pythonOutput += data.toString(); // Convert Buffer to string and append to the output
+            });
+
+            // Handle stderr
+            pythonProcess.stderr.on('data', (data) => {
+            console.error(`Python stderr: ${data}`);
+            });
+
+            // Handle process exit
+            pythonProcess.on('close', (code) => {
+            console.log(`Python script exited with code ${code}`);
+            });
+                
+            const jsonData = JSON.parse(pythonOutput);
+            res.json(jsonData); // Send the JSON response
 
 
         } catch {
