@@ -2,7 +2,6 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./models/user');
-// const { PythonShell } = require("python-shell")
 const { spawn } = require("child_process");
 const path = require('path');
 
@@ -18,40 +17,23 @@ const server = () => {
     app.use(cors());
     app.use(express.json());
 
-    app.use(function (req, res, next) {
-        console.log('Time:', Date.now(), req.method, req.url);
+    app.use(function (req, _res, next) {
+        console.log(req.method, req.url);
         next();
     })
 
-    app.get('/', (req, res) => {
-        // PythonShell.run("/../python/test.py", null, (err, result) => {
-        //     if (err) console.log(err)
-        //     else console.log(result)
-        // })
-        const script = path.join(path.dirname(path.dirname(__dirname)),'/','python','test.py')
-
-        const pythonProcess = spawn('python3', [script]);
-
-        pythonProcess.stdout.on('data', (data) => {
-            res.write(data)
-        })
-
-        // pythonProcess.stderr.on("data", (data) => {
-        //     console.log(`${data}`)
-        // })
-
-        pythonProcess.on("close", (code) => {
-            console.log(`${code}`)
-            res.end()
-        })
-        // const pid = pythonProcess.pid;
-        // pythonProcess.kill(pid)
-        // try {
-        // } catch {
-        //     console.log("LMAO")
-        // }
-
-    });
+    app.post('/login', async (req, res) => {
+        try {
+            const { email, password } = req.body;
+            const user = await User.findOne({ email: email, password: password })
+            if (!user) {
+                res.status(401).json({ error: "User not found" })
+            }
+            res.status(200).json(user)
+        } catch (err) {
+            res.status(400).json({ error: err })
+        }
+    })
 
     app.post('/users', async (req, res) => {
 
@@ -83,40 +65,35 @@ const server = () => {
 
     app.get('/users/:id/match', async (req, res) => {
         try { 
-             const user = await User.findById(req.params.id);
-                if (!user) {
-                    return res.status(404).json({ error: 'User not found' });
-                }
+            const id = req.params.id;
 
-            const users = await User.find({});
-            
-            const { spawn } = require('child_process');
+            let users = await User.find({});
 
-            const pythonProcess = spawn('python', ['../../python/scripts/match.py', user, users]);
+            users = JSON.stringify(users);
+
+            const script = path.join(path.dirname(path.dirname(__dirname)),'/','python','scripts','match.py')
+            const ls = spawn('python', [script, id, users]);
             
-            let pythonOutput = ''; // To store the output from Python
 
             // Handle stdout
-            pythonProcess.stdout.on('data', (data) => {
-            pythonOutput += data.toString(); // Convert Buffer to string and append to the output
+            ls.stdout.on('data', (data) => {
+                console.log(data.toString());
+                res.json(JSON.parse(data));
             });
 
             // Handle stderr
-            pythonProcess.stderr.on('data', (data) => {
-            console.error(`Python stderr: ${data}`);
-            });
+            ls.stderr.on('data', (data) => {
+                console.log(`stderr: ${data}`);
+              });
 
-            // Handle process exit
-            pythonProcess.on('close', (code) => {
-            console.log(`Python script exited with code ${code}`);
-            });
-                
-            const jsonData = JSON.parse(pythonOutput);
-            res.json(jsonData); // Send the JSON response
+            // Handle close
+            ls.on("close", (code) => {
+                console.log(`${code}`)
+            })
+                   
 
-
-        } catch {
-            res.status(400).json({ error: 'Invalid request' });
+        } catch (err) {
+            res.status(400).json({ error: err });
         }
     });
 
