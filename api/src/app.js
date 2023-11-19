@@ -112,9 +112,31 @@ const server = () => {
         }
     });
 
-    //get user matches 
+    //fetch matching users and populate matches field
 
-    //update user matches 
+    app.patch('/users/:id/match/fetch', async (req, res) => {
+
+        const userId = req.params.id;
+
+        User.findById(userId)
+        .populate('matches.user')  // Populate the 'user' field in the 'matches' array
+        .exec()
+        .then(user => {
+            if (!user) {
+            console.log('User not found');
+            return;
+            }
+
+            console.log('User:', user);
+            console.log('Matches:', user.matches);
+            res.json(user.matches)
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+        
+    });
 
     //get user by id 
     app.get('/users/:id', async (req, res) => {
