@@ -48,7 +48,7 @@ function Matches() {
             <div className="w-screen h-screen gradient">
                 <div className="w-full h-full">
                     <div className="px-4">
-                        <div className="pt-12 pb-4 text-center text-[24px]">Matches</div>
+                        <div className="pt-12 mb-4 text-center text-[24px]">Matches</div>
                         <div className="grid grid-cols-1 gap-2 overflow-y-auto">
                             {
                                 users && users.map((item, index) => (

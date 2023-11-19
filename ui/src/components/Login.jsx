@@ -20,7 +20,7 @@ function Login() {
         });
 
         api.post("/login", formData).then(() => {
-            navigate("/matches", { replace: true })
+            navigate("/profile", { replace: true })
             return
         }).catch(() => {
             console.log("Error")
