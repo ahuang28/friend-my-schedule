@@ -76,7 +76,7 @@ const server = () => {
             users = JSON.stringify(users);
 
             const script = path.join(path.dirname(path.dirname(__dirname)),'/','python','scripts','match.py')
-            const ls = spawn('python', [script, userId, users]);
+            const ls = spawn('py', [script, userId, users]);
             
 
             // Handle stdout

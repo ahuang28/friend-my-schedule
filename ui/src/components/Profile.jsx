@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import NavBar from "./NavBar"
 import {Input, Button, Autocomplete, AutocompleteItem, Select, SelectItem, Chip} from "@nextui-org/react";
 import courses_data from "../../../python/data/courses.json";
@@ -8,21 +8,23 @@ import { useNavigate } from "react-router-dom"
 function Profile() {
 
     const navigate = useNavigate();
+    const [available_courses, setAvailableCourses] = useState(new Set());
 
-    const available_courses = new Set();
-
-    console.log(courses_data)
-
-    for (const department in courses_data) {
-        if (jsonData.hasOwnProperty(department)) {
-          const departmentCourses = courses_data[department];
+    useEffect(() => {
     
-          // Concatenate department code with course numbers and add to the set
-          departmentCourses.forEach(course => {
-            available_courses.add(`${department}${course}`);
-          });
-        }
-      }
+        for (const department in courses_data) {
+            if (courses_data.hasOwnProperty(department)) {
+              const departmentCourses = courses_data[department];
+        
+              // Concatenate department code with course numbers and add to the set
+              departmentCourses.forEach(course => {
+                available_courses.add(`${department}${course}`);
+              });
+            }
+          }
+        setAvailableCourses(available_courses);
+    }, [])
+
 
     const [formData, setFormData] = useState({
         name: "",
@@ -51,13 +53,16 @@ function Profile() {
             baseURL: "http://localhost:3000",
         });
 
-        api.patch("/users/655832f0bca351dad91dd112", formData).then(() => {
-            navigate("/matches", { replace: true })
-            return
+        api.patch("/users/655945feacec3f11232373be", formData).then(() => {
         }).catch(() => {
             console.log("Error")
         })
 
+        api.patch("/users/655945feacec3f11232373be/match").then((data) => {
+            navigate("/matches", { replace: true })
+            return
+
+        })
     }
 
     const handleChange = (e) => {
@@ -84,14 +89,25 @@ function Profile() {
         if (e.key === "Enter" && inputCourse.length > 0) {
             // check if the course exists lol 
 
-            if (available_courses.has(inputCourse.trim())) {
-                const outputCourse = inputCourse.replace(/([A-Za-z]+)([0-9]+)/, '$1 $2');
-                courses.push(outputCourse);
+            let value = inputCourse.trim();
+            console.log(value)
+            let course = value.replace(/[^a-zA-Z]/g, '').toUpperCase()
+            let id = value.replace(/[^0-9]/g, '')
+            if (available_courses.has(course+id)) {
+                courses.push(`${course} ${id}`);
                 setInputCourse("");
-            
-        }   else { 
+            } else {
                 alert("Course does not exist");
             }
+
+        //     if (available_courses.has(inputCourse.trim())) {
+        //         const outputCourse = inputCourse.replace(/([A-Za-z]+)([0-9]+)/, '$1 $2');
+        //         courses.push(outputCourse);
+        //         setInputCourse("");
+            
+        // }   else { 
+        //         alert("Course does not exist");
+            // }
         }
     }
 
@@ -122,13 +138,13 @@ function Profile() {
                 <img className="absolute w-[390px] h-[692px] right-0 bottom-0" alt="Ellipse" src="/src/assets/ellipse-13.svg" />
 
                 <div className="w-full h-full flex flex-col items-center">
-                    <div className="mt-20 [font-family:'Inter-Regular',Helvetica] font-normal text-white text-[24px] tracking-[0] leading-[normal]">
+                    <div className="mt-12 [font-family:'Inter-Regular',Helvetica] font-normal text-white text-[24px] tracking-[0] leading-[normal]">
                         Profile
                     </div> 
                     
                     {/* Form */}
-                    <div className="py-5 mt-5 px-4 flex flex-col items-center w-[360px] rounded-[16px] shadow-[0px_4px_24px_-1px_#00000033] backdrop-blur-2xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40px)_brightness(100%)] [background:linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(217,217,217,0.1)_100%)]">                       
-                        <form className="w-full h-full flex flex-col items-center max-h-[450px] overflow-y-scroll overflow-x-hidden">
+                    <div className="py-5 mt-4 px-5 flex flex-col items-center w-[360px] rounded-[16px] shadow-[0px_4px_24px_-1px_#00000033] backdrop-blur-2xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40px)_brightness(100%)] [background:linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(217,217,217,0.1)_100%)]">                       
+                        <form className="w-full h-full flex flex-col items-center max-h-[500px] overflow-y-scroll overflow-x-hidden">
                             <Input onChange={handleChange} className="w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Name" id="name" value={name}/>
                             <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="email" label="Email" id="email" value={email}/>
                             <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Year" id="year" value={year}/>
