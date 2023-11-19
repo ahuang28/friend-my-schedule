@@ -1,8 +1,6 @@
 import { useState } from "react";
 import NavBar from "./NavBar"
 import {Input, Button, Autocomplete, AutocompleteItem, Select, SelectItem, Chip} from "@nextui-org/react";
-import Path from "path";
-// const course_json = require(Path.join(Path.dirname(Path.dirname(Path.dirname(__dirname)))),'/','python','data','courses.json');
 import courses_data from "../../../python/data/courses.json";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
@@ -15,16 +13,16 @@ function Profile() {
 
     console.log(courses_data)
 
-    // for (const department in courses_data) {
-    //     if (jsonData.hasOwnProperty(department)) {
-    //       const departmentCourses = courses_data[department];
+    for (const department in courses_data) {
+        if (jsonData.hasOwnProperty(department)) {
+          const departmentCourses = courses_data[department];
     
-    //       // Concatenate department code with course numbers and add to the set
-    //       departmentCourses.forEach(course => {
-    //         available_courses.add(`${department}${course}`);
-    //       });
-    //     }
-    //   }
+          // Concatenate department code with course numbers and add to the set
+          departmentCourses.forEach(course => {
+            available_courses.add(`${department}${course}`);
+          });
+        }
+      }
 
     const [formData, setFormData] = useState({
         name: "",
