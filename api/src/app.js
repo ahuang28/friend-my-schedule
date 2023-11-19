@@ -83,7 +83,6 @@ const server = () => {
             ls.stdout.on('data', (data) => {
                 const newmatches = JSON.parse(data);
                 res.json(newmatches);
-                console.log(newmatches);
 
 
             // Update a specific field for the user
