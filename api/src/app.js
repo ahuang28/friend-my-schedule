@@ -62,23 +62,38 @@ const server = () => {
     })
 
     //generate match using python script in python/script folder
-
-    app.get('/users/:id/match', async (req, res) => {
+    app.patch('/users/:id/match', async (req, res) => {
         try { 
-            const id = req.params.id;
+            const userId = req.params.id;
+
+            const user = await User.findById(req.params.id);
+                if (!user) {
+                    return res.status(404).json({ error: 'User not found' });
+                }
 
             let users = await User.find({});
 
             users = JSON.stringify(users);
 
             const script = path.join(path.dirname(path.dirname(__dirname)),'/','python','scripts','match.py')
-            const ls = spawn('python', [script, id, users]);
+            const ls = spawn('python', [script, userId, users]);
             
 
             // Handle stdout
             ls.stdout.on('data', (data) => {
-                console.log(data.toString());
-                res.json(JSON.parse(data));
+                const newmatches = JSON.parse(data);
+                res.json(newmatches);
+
+
+            // Update a specific field for the user
+            User.findByIdAndUpdate(userId, { $set: { matches: newmatches } }, { new: true })
+                .then(user => {
+                console.log('User updated successfully:', user);
+              })
+              .catch(err => {
+                console.error(err);
+              });
+
             });
 
             // Handle stderr
@@ -90,11 +105,37 @@ const server = () => {
             ls.on("close", (code) => {
                 console.log(`${code}`)
             })
-                   
+            
 
         } catch (err) {
             res.status(400).json({ error: err });
         }
+    });
+
+    //fetch matching users and populate matches field
+
+    app.patch('/users/:id/match/fetch', async (req, res) => {
+
+        const userId = req.params.id;
+
+        User.findById(userId)
+        .populate('matches.user')  // Populate the 'user' field in the 'matches' array
+        .exec()
+        .then(user => {
+            if (!user) {
+            console.log('User not found');
+            return;
+            }
+
+            console.log('User:', user);
+            console.log('Matches:', user.matches);
+            res.json(user.matches)
+        })
+        .catch(err => {
+            console.error(err);
+        });
+
+        
     });
 
     //get user by id 

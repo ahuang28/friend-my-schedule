@@ -43,7 +43,7 @@ def main():
     cosine_df = cosine_df.sort_values(by="Similarity", ascending=False)
     
 
-    cosine_similarity_list = [{"id": i_d,"value": score} for i_d, score in cosine_df.itertuples(name=None)]
+    cosine_similarity_list = [{"user": i_d,"percentage": score} for i_d, score in cosine_df.itertuples(name=None)]
     
     
     print(json.dumps(cosine_similarity_list, indent=4))
