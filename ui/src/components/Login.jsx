@@ -1,19 +1,30 @@
 import { useState } from "react";
 import {Input, Button} from "@nextui-org/react";
 import axios from "axios";
-// import api from "../api";
+import { useNavigate } from "react-router-dom"
 
 function Login() {
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
-        username: "",
+        email: "",
         password: ""
     });
 
-    const { username, password } = formData;
+    const { email, password } = formData;
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(formData);
+        const api = axios.create({
+            baseURL: "http://localhost:3000",
+        });
+
+        api.post("/login", formData).then(() => {
+            navigate("/matches", { replace: true })
+            return
+        }).error(() => {
+            console.log("Error")
+        })
     }
 
     const handleChange = (e) => {
@@ -21,29 +32,6 @@ function Login() {
         setFormData({ ...formData, [id]: value });
     }
 
-    const api = axios.create({
-        baseURL: "http://localhost:3000",
-    });
-
-    const UserService = {}
-
-    UserService.register = async (user) => {
-        try {
-            const { data } = await api.post("/register", user);
-            return data;
-        } catch(error) {
-            throw error;
-        }
-    }
-
-    UserService.getUser = async (id) => {
-        try {
-            const { data } = await api.get(`/user/${id}`);
-            return data;
-        } catch(error) {
-            throw error;
-        }
-    }
 
     return (
         <>
@@ -68,7 +56,7 @@ function Login() {
                         <img className="w-[76px] h-[40px]" alt="Logo" src="/src/assets/logo.svg" />
                         
                         <form>
-                            <Input onChange={handleChange} className="mt-[33px] w-[274px] h-[41px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Username" id="username" value={username}/>
+                            <Input onChange={handleChange} className="mt-[33px] w-[274px] h-[41px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="email" label="email" id="email" value={email}/>
                             <Input onChange={handleChange} className="mt-[10px] w-[274px] h-[41px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="password" label="Password" id="password" value={password}/>
                             <Button onClick={handleSubmit} radius="md" className="mt-12 w-[274px] h-[41px] bg-[#00284c] opacity-1 [font-family:'Inter-Bold',Helvetica] font-bold text-white text-[12px] tracking-[0] leading-[normal]">
                                 Login
