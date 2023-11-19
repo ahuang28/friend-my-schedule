@@ -35,10 +35,10 @@ function Chat() {
 
     return (
         <>
-            <div className="absolute top-0 right-0 bg-white [background:linear-gradient(180deg,rgb(64,139,252)_10.95%,rgb(248,243,237)_35.73%,rgb(252.2,182.9,79.3)_67.33%,rgb(254,205,249)_100%)] w-screen h-screen overflow-hidden">
                 {/* <img className="absolute top-0 left-0" alt="chat bg" src="/src/assets/chat-bg.svg" /> */}
+            <div className="absolute top-0 right-0 bg-white [background:linear-gradient(180deg,rgb(64,139,252)_10.95%,rgb(248,243,237)_35.73%,rgb(252.2,182.9,79.3)_67.33%,rgb(254,205,249)_100%)] w-screen h-screen overflow-hidden">
                 <div className="w-full h-full flex flex-col items-center">
-                    <div className="mt-12 mb-4 [font-family:'Inter-Regular',Helvetica] font-normal text-[#00284c] text-[24px] tracking-[0] leading-[normal]">
+                    <div className="mt-12 mb-4 z-10 [font-family:'Inter-Regular',Helvetica] font-normal text-[#00284c] text-[24px] tracking-[0] leading-[normal]">
                         Chats
                     </div>
 
@@ -55,17 +55,14 @@ function Chat() {
                                             </div>
                                         </div>
                                     </CardHeader>
-                                    <img className="w-[240px] ml-16" alt="line" src="/src/assets/line.svg" />
+                                    <img className="w-[240px] ml-16 z-10" alt="line" src="/src/assets/line.svg" />
                                 </Card>
                             ))
                         }
                     </div>
                 
                 </div>
-
-
-                <div className="w-full h-full mt-12 flex flex-col items-center">
-                </div>
+                <img className="absolute top-0 left-0 z-0" alt="chat bg" src="/src/assets/chat-bg.svg" />
                 <NavBar />
             </div>
         </>
