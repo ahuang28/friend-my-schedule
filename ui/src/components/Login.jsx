@@ -44,10 +44,10 @@ function Login() {
 
                 <div className="flex flex-col items-center">
                     <div className="pt-[127px]">
-                        <div className="text-center [font-family:'Inter-Regular', Helvetica] font-normal text-[#00274c] text-[20px] tracking-[0] leading-[normal] whitespace-nowrap">
+                        <div className="text-center [font-family:'Inter'] font-normal text-[#00274c] text-[20px] tracking-wide leading-[normal] whitespace-nowrap">
                             Friend My Schedule
                         </div>
-                        <div className="text-center [font-family:'Inter-Bold', Helvetica] font-bold text-[#00274c] text-[32px] tracking-[0] leading-[normal]">
+                        <div className="text-center [font-family:'Inter', Helvetica] font-bold text-[#00274c] text-[32px] tracking-wide leading-[normal]">
                             Welcome back!
                         </div>
                     </div>
@@ -56,9 +56,9 @@ function Login() {
                         <img className="w-[76px] h-[40px]" alt="Logo" src="/src/assets/logo.svg" />
                         
                         <form>
-                            <Input onChange={handleChange} className="mt-[33px] w-[274px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="email" label="Email" id="email" value={email}/>
-                            <Input onChange={handleChange} className="mt-[10px] w-[274px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="password" label="Password" id="password" value={password}/>
-                            <Button onClick={handleSubmit} radius="md" className="mt-12 w-[274px] h-[50px] bg-[#00284c] opacity-1 [font-family:'Inter-Bold',Helvetica] font-bold text-white text-[12px] tracking-[0] leading-[normal]">
+                            <Input onChange={handleChange} className="mt-[33px] w-[274px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter'] font-normal text-[#000000a6] text-[12px] tracking-wide leading-[normal]" type="email" label="Email" id="email" value={email}/>
+                            <Input onChange={handleChange} className="mt-[10px] w-[274px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter'] font-normal text-[#000000a6] text-[12px] tracking-wide leading-[normal]" type="password" label="Password" id="password" value={password}/>
+                            <Button onClick={handleSubmit} radius="md" className="mt-12 w-[274px] h-[50px] bg-[#00284c] opacity-1 [font-family:'Inter'] font-bold text-white text-[12px] tracking-wide leading-[normal]">
                                 Login
                             </Button>
                         </form>

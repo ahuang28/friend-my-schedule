@@ -139,40 +139,41 @@ function Profile() {
                 <img className="absolute w-[390px] h-[692px] right-0 bottom-0" alt="Ellipse" src="/src/assets/ellipse-13.svg" />
 
                 <div className="w-full h-full flex flex-col items-center">
-                    <div className="mt-12 [font-family:'Inter-Regular',Helvetica] font-normal text-white text-[24px] tracking-[0] leading-[normal]">
+                    <div className="mt-12 [font-family:'Inter'] font-normal text-white text-[24px] tracking-wide leading-[normal]">
                         Profile
                     </div> 
                     
                     <div className="py-5 mt-4 px-5 flex flex-col items-center w-[360px] rounded-[16px] shadow-[0px_4px_24px_-1px_#00000033] backdrop-blur-2xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40px)_brightness(100%)] [background:linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(217,217,217,0.1)_100%)]">                       
                         <form className="w-full h-full flex flex-col items-center max-h-[500px] overflow-y-scroll overflow-x-hidden">
-                            <Input onChange={handleChange} className="w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Name" id="name" value={name}/>
-                            <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="email" label="Email" id="email" value={email}/>
-                            <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="number" label="Year" id="year" value={year}/>
-                            <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Major" id="major" value={major}/>
+                            <Input onChange={handleChange} className="w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter'] font-normal text-[#000000a6] text-[12px] tracking-wide leading-[normal]" type="text" label="Name" id="name" value={name}/>
+                            <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter'] font-normal text-[#000000a6] text-[12px] tracking-wide leading-[normal]" type="email" label="Email" id="email" value={email}/>
+                            <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter'] font-normal text-[#000000a6] text-[12px] tracking-wide leading-[normal]" type="number" label="Year" id="year" value={year}/>
+                            <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter'] font-normal text-[#000000a6] text-[12px] tracking-wide leading-[normal]" type="text" label="Major" id="major" value={major}/>
                             <div>
-                                <Input onChange={handleChange} onKeyDown={handleCourseKeyDown} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Courses" id="courses" value={inputCourse}/>
+                                <Input onChange={handleChange} onKeyDown={handleCourseKeyDown} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter'] font-normal text-[#000000a6] text-[12px] tracking-wide leading-[normal]" type="text" label="Courses" id="courses" value={inputCourse}/>
                                 <div className="flex flex-row flex-wrap gap-x-2">
                                     {courses.map((course, index) => (
-                                        <Chip onClose={() => deleteCourse(index)} key={index} className="mt-2 opacity-70 bg-[#408BFC] text-white">{course}</Chip>
+                                        <Chip onClose={() => deleteCourse(index)} key={index} className="mt-2 opacity-70 bg-[#408BFC] inter-font-chip tracking-wide text-white">{course}</Chip>
                                     ))}
                                 </div>
 
-                                <Input onChange={handleChange} onKeyDown={handleKeyDown} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Interests" id="interests" value={inputInterest}/>
+                                <Input onChange={handleChange} onKeyDown={handleKeyDown} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter'] font-normal text-[#000000a6] text-[12px] tracking-wide leading-[normal]" type="text" label="Interests" id="interests" value={inputInterest}/>
                                 <div className="flex flex-row flex-wrap gap-x-2">
                                     {interests.map((interest, index) => (
-                                        <Chip onClose={() => deleteInterest(index)} key={index} className="mt-2 opacity-70 bg-[#408BFC] text-white">{interest}</Chip>
+                                        <Chip onClose={() => deleteInterest(index)} key={index} className="mt-2 opacity-70 bg-[#408BFC] inter-font-chip tracking-wide text-white">{interest}</Chip>
                                     
                                     ))}
                                 </div>
                             </div>
                             
                         </form>
-                        <Button onClick={handleSubmit} radius="md" className="mt-5 w-[320px] h-[50px] bg-[#00284c] opacity-1 [font-family:'Inter-Bold',Helvetica] font-bold text-white text-[12px] tracking-[0] leading-[normal]">
+                        <Button onClick={handleSubmit} radius="md" className="mt-5 w-[320px] h-[50px] bg-[#00284c] opacity-1 [font-family:'Inter'] font-bold text-white text-[12px] tracking-wide leading-[normal]">
                             Save & Generate
                         </Button>
                     </div>   
 
-                    <Button onClick={logOut} radius="md" variant="bordered" className="mt-7 w-[130px] h-[40px] opacity-100 border-[#00274c] [font-family:'Inter-Bold',Helvetica] font-normal text-[#00274c] text-[12px] tracking-[0] leading-[normal]">
+                    {/* Logout */}
+                    <Button onClick={logOut} radius="md" variant="bordered" className="mt-7 w-[130px] h-[40px] opacity-100 border-[#00274c] [font-family:'Inter'] font-normal text-[#00274c] text-[12px] tracking-wide leading-[normal]">
                         Logout
                     </Button>
                 </div>

@@ -49,7 +49,7 @@ function Matches() {
             <div className="w-screen h-screen gradient">
 
                 <div className="w-full h-full">
-                    <div className="relative z-[100] pt-11 mb-4 text-center text-[24px]">Matches</div>
+                    <div className="relative z-[100] pt-11 mb-4 text-center text-[24px] [font-family:'Inter'] tracking-wide">Matches</div>
                     <div className="z-10 grid grid-cols-1 gap-2 max-h-[680px] overflow-y-scroll overflow-x-hidden px-4">
                         {
                             users && users.map((item, index) => (
@@ -58,8 +58,8 @@ function Matches() {
                                             <div className="flex flex-row">
                                                 <Avatar></Avatar>
                                                 <div className="pl-4">
-                                                    <div className="font-bold">{item.user.name}</div>
-                                                    <div className="text-[12px]">U{item.user.year} {camelCase(item.user.major)}</div>
+                                                    <div className="text-[#00284c] [font-family:'Inter'] font-bold tracking-wide">{item.user.name}</div>
+                                                    <div className="text-[#00284c] [font-family:'Inter'] text-[12px] tracking-wide">U{item.user.year} {camelCase(item.user.major)}</div>
                                                 </div>
                                             </div>
                                             <Button isIconOnly variant="light"onClick={() => onClick(item.user)}>

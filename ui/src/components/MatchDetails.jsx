@@ -40,7 +40,7 @@ export function MatchDetails() {
                     <div className="py-[32px]">
                         {/* Back */}
                         <div className="flex flex-row items-center">
-                            <Button onClick={onClick} variant="light" className="[font-family:'Inter-Regular',Helvetica] text-[#00274c] font-bold" startContent={<ChevronLeftIcon/>}>
+                            <Button onClick={onClick} variant="light" className="[font-family:'Inter'] text-[#00274c] font-bold tracking-wide" startContent={<ChevronLeftIcon/>}>
                                 Back
                             </Button>
                         </div>
@@ -52,7 +52,7 @@ export function MatchDetails() {
 
                             {/* Rectangle */}
                             <div className=" z-0 py-10 px-6 flex flex-col items-center w-[325px] rounded-[16px] shadow-[0px_4px_24px_-1px_#00000033] backdrop-blur-2xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40px)_brightness(100%)] [background:linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(217,217,217,0.1)_100%)]">
-                                <div className="[font-family:'Inter-Bold',Helvetica] font-bold text-[20px] text-[#00274c] tracking-[0] leading-[normal] whitespace-nowrap">
+                                <div className="[font-family:'Inter'] font-bold text-[20px] text-[#00274c] tracking-wide leading-[normal] whitespace-nowrap">
                                     {user.name}
                                 </div>
                                 {/* <div className="mt-3 flex flex-row items-center gap-5"> */}
@@ -61,42 +61,41 @@ export function MatchDetails() {
                                     {/* <InstagramLogoIcon className="w-[30px] h-[30px] fill=#00274c"/> */}
                                 {/* </div> */}
                                 <div className="mt-5 w-full flex flex-row justify-between">
-                                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+                                    <div className="[font-family:'Inter'] font-normal text-[#00274c] text-[16px] tracking-wide leading-[normal] whitespace-nowrap">
                                         Year
                                     </div>
-                                    <div className="[font-family:'Inter-Regular',Helvetica] font-bold text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+                                    <div className="[font-family:'Inter'] font-bold text-[#00274c] text-[16px] tracking-wide leading-[normal] whitespace-nowrap">
                                         U{user.year}
                                     </div>
                                 </div>
                                 <div className="mt-5 w-full flex flex-row justify-between">
-                                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+                                    <div className="[font-family:'Inter'] font-normal text-[#00274c] text-[16px] tracking-wide leading-[normal] whitespace-nowrap">
                                         Major
                                     </div>
-                                    <div className="[font-family:'Inter-Regular',Helvetica] font-bold text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+                                    <div className="[font-family:'Inter'] font-bold text-[#00274c] text-[16px] tracking-wide leading-[normal] whitespace-nowrap">
                                         {camelCase(user.major)}
                                     </div>
                                 </div>
                                 {/* Courses */}
                                 <div className="mt-5 w-full h-full flex flex-col items-start">
-                                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+                                    <div className="[font-family:'Inter'] font-normal text-[#00274c] text-[16px] tracking-wide leading-[normal] whitespace-nowrap">
                                         Courses
                                     </div>
                                     <div className="flex flex-row flex-wrap gap-x-2">
                                         {user.classes.map((course, index) => (
-                                            <Chip key={index} className="mt-2 opacity-70 bg-[#408BFC] text-white">{separate(course)}</Chip>
-                                        
+                                            <Chip key={index} className="mt-2 opacity-70 bg-[#408BFC] inter-font-chip tracking wide text-white">{separate(course)}</Chip>
                                         ))}
                                     </div>
                                 </div>
 
                                 {/* Interests */}
                                 <div className="mt-5 w-full h-full flex flex-col items-start">
-                                    <div className="[font-family:'Inter-Regular',Helvetica] font-normal text-[#00274c] text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+                                    <div className="[font-family:'Inter'] font-normal text-[#00274c] text-[16px] tracking-wide leading-[normal] whitespace-nowrap">
                                         Interests
                                     </div>
                                     <div className="flex flex-row flex-wrap gap-x-2">
                                         {user.interests.map((interest, index) => (
-                                            <Chip key={index} className="mt-2 opacity-70 bg-[#408BFC] text-white">{interest}</Chip>
+                                            <Chip key={index} className="mt-2 opacity-70 bg-[#408BFC] inter-font-chip tracking-wide text-white">{interest}</Chip>
                                         
                                         ))}
                                     </div>
