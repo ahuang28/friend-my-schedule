@@ -1,6 +1,7 @@
 import { useState } from "react";
 import NavBar from "./NavBar"
 import {Input, Button, Autocomplete, AutocompleteItem, Select, SelectItem, Chip} from "@nextui-org/react";
+import courses_data from "../../../python/data/courses.json";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 
@@ -8,7 +9,20 @@ function Profile() {
 
     const navigate = useNavigate();
 
-    const available_courses = ["Comp 202", "Comp 206", "Comp 208", "Comp 250", "Comp 251"]
+    const available_courses = new Set();
+
+    console.log(courses_data)
+
+    for (const department in courses_data) {
+        if (jsonData.hasOwnProperty(department)) {
+          const departmentCourses = courses_data[department];
+    
+          // Concatenate department code with course numbers and add to the set
+          departmentCourses.forEach(course => {
+            available_courses.add(`${department}${course}`);
+          });
+        }
+      }
 
     const [formData, setFormData] = useState({
         name: "",
@@ -68,8 +82,16 @@ function Profile() {
 
     const handleCourseKeyDown = (e) => {
         if (e.key === "Enter" && inputCourse.length > 0) {
-            courses.push(inputCourse);
-            setInputCourse("");
+            // check if the course exists lol 
+
+            if (available_courses.has(inputCourse.trim())) {
+                const outputCourse = inputCourse.replace(/([A-Za-z]+)([0-9]+)/, '$1 $2');
+                courses.push(outputCourse);
+                setInputCourse("");
+            
+        }   else { 
+                alert("Course does not exist");
+            }
         }
     }
 
