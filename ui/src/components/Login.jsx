@@ -22,7 +22,7 @@ function Login() {
         api.post("/login", formData).then(() => {
             navigate("/matches", { replace: true })
             return
-        }).error(() => {
+        }).catch(() => {
             console.log("Error")
         })
     }

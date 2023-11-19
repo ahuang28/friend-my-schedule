@@ -17,10 +17,10 @@ const server = () => {
     app.use(cors());
     app.use(express.json());
 
-    app.use(function (req, _res, next) {
-        console.log(req.method, req.url);
-        next();
-    })
+    // app.use(function (req, _res, next) {
+    //     console.log(req.method, req.url);
+    //     next();
+    // })
 
     app.post('/login', async (req, res) => {
         try {
