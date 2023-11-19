@@ -1,8 +1,12 @@
 import { useState } from "react";
 import NavBar from "./NavBar"
 import {Input, Button, Autocomplete, AutocompleteItem, Select, SelectItem, Chip} from "@nextui-org/react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom"
 
 function Profile() {
+
+    const navigate = useNavigate();
 
     const available_courses = ["Comp 202", "Comp 206", "Comp 208", "Comp 250", "Comp 251"]
 
@@ -25,7 +29,21 @@ function Profile() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        formData.courses = courses;
+        formData.interests = interests;
         console.log(formData);
+
+        const api = axios.create({
+            baseURL: "http://localhost:3000",
+        });
+
+        api.patch("/users/655832f0bca351dad91dd112", formData).then(() => {
+            navigate("/matches", { replace: true })
+            return
+        }).catch(() => {
+            console.log("Error")
+        })
+
     }
 
     const handleChange = (e) => {
@@ -83,8 +101,8 @@ function Profile() {
                     </div> 
                     
                     {/* Form */}
-                    <div className="py-5 mt-5 px-4 flex flex-col items-center w-[350px] rounded-[16px] shadow-[0px_4px_24px_-1px_#00000033] backdrop-blur-2xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40px)_brightness(100%)] [background:linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(217,217,217,0.1)_100%)]">                       
-                        <form className="w-full h-full flex flex-col items-center">
+                    <div className="py-5 mt-5 px-4 flex flex-col items-center w-[360px] rounded-[16px] shadow-[0px_4px_24px_-1px_#00000033] backdrop-blur-2xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40px)_brightness(100%)] [background:linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(217,217,217,0.1)_100%)]">                       
+                        <form className="w-full h-full flex flex-col items-center max-h-[450px] overflow-y-scroll overflow-x-hidden">
                             <Input onChange={handleChange} className="w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Name" id="name" value={name}/>
                             <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="email" label="Email" id="email" value={email}/>
                             <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Year" id="year" value={year}/>
@@ -105,15 +123,15 @@ function Profile() {
                                     ))}
                                 </div>
                             </div>
-                            <Button onClick={handleSubmit} radius="md" className="mt-12 w-[320px] h-[50px] bg-[#00284c] opacity-1 [font-family:'Inter-Bold',Helvetica] font-bold text-white text-[12px] tracking-[0] leading-[normal]">
-                                Save & Generate
-                            </Button>
+                            
                         </form>
-                        
+                        <Button onClick={handleSubmit} radius="md" className="mt-5 w-[320px] h-[50px] bg-[#00284c] opacity-1 [font-family:'Inter-Bold',Helvetica] font-bold text-white text-[12px] tracking-[0] leading-[normal]">
+                            Save & Generate
+                        </Button>
                     </div>   
 
                     {/* Logout */}
-                    <Button onClick={handleSubmit} radius="md" variant="bordered" className="mt-12 w-[150px] h-[50px] opacity-100 border-[#00274c] [font-family:'Inter-Bold',Helvetica] font-normal text-[#00274c] text-[12px] tracking-[0] leading-[normal]">
+                    <Button onClick={handleSubmit} radius="md" variant="bordered" className="mt-5 w-[150px] h-[50px] opacity-100 border-[#00274c] [font-family:'Inter-Bold',Helvetica] font-normal text-[#00274c] text-[12px] tracking-[0] leading-[normal]">
                         Logout
                     </Button>
                 </div>
