@@ -87,7 +87,7 @@ const server = () => {
 
 
             // Update a specific field for the user
-            const updateQuery = User.findByIdAndUpdate(userId, { $set: { matches: newmatches } }, { new: true })
+            User.findByIdAndUpdate(userId, { $set: { matches: newmatches } }, { new: true })
                 .then(user => {
                 console.log('User updated successfully:', user);
               })
