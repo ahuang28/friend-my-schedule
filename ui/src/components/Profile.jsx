@@ -1,30 +1,17 @@
 import { useState, useEffect } from "react";
 import NavBar from "./NavBar"
-import {Input, Button, Autocomplete, AutocompleteItem, Select, SelectItem, Chip} from "@nextui-org/react";
+import {Input, Button, Chip} from "@nextui-org/react";
 import courses_data from "../../../python/data/courses.json";
 import axios from "axios";
 import { useNavigate } from "react-router-dom"
 
 function Profile() {
+    const api = axios.create({
+        baseURL: "http://localhost:3000",
+    });
 
     const navigate = useNavigate();
     const [available_courses, setAvailableCourses] = useState(new Set());
-
-    useEffect(() => {
-    
-        for (const department in courses_data) {
-            if (courses_data.hasOwnProperty(department)) {
-              const departmentCourses = courses_data[department];
-        
-              // Concatenate department code with course numbers and add to the set
-              departmentCourses.forEach(course => {
-                available_courses.add(`${department}${course}`);
-              });
-            }
-          }
-        setAvailableCourses(available_courses);
-    }, [])
-
 
     const [formData, setFormData] = useState({
         name: "",
@@ -42,16 +29,40 @@ function Profile() {
     const [inputCourse, setInputCourse] = useState("");
 
     const [courses, setCourses] = useState([]);
+    useEffect(() => {
+        api.get("/users/655945feacec3f11232373be").then((data) => {
+            const user = data.data
+            console.log(user)
+            formData.name = user.name
+            formData.email = user.email
+            formData.year = user.year
+            formData.major = user.major
+            setCourses(user.classes ? user.classes : [])
+            setInterests(user.interests ? user.interests : [])
+            setFormData(formData)
+            
+        }).catch((err) => console.log(err))
+    
+        for (const department in courses_data) {
+            if (courses_data.hasOwnProperty(department)) {
+              const departmentCourses = courses_data[department];
+        
+              // Concatenate department code with course numbers and add to the set
+              departmentCourses.forEach(course => {
+                available_courses.add(`${department}${course}`);
+              });
+            }
+          }
+        setAvailableCourses(available_courses);
+
+        
+    }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault();
         formData.courses = courses;
         formData.interests = interests;
         console.log(formData);
-
-        const api = axios.create({
-            baseURL: "http://localhost:3000",
-        });
 
         api.patch("/users/655945feacec3f11232373be", formData).then(() => {
         }).catch(() => {
@@ -90,7 +101,6 @@ function Profile() {
             // check if the course exists lol 
 
             let value = inputCourse.trim();
-            console.log(value)
             let course = value.replace(/[^a-zA-Z]/g, '').toUpperCase()
             let id = value.replace(/[^0-9]/g, '')
             if (available_courses.has(course+id)) {
@@ -99,15 +109,6 @@ function Profile() {
             } else {
                 alert("Course does not exist");
             }
-
-        //     if (available_courses.has(inputCourse.trim())) {
-        //         const outputCourse = inputCourse.replace(/([A-Za-z]+)([0-9]+)/, '$1 $2');
-        //         courses.push(outputCourse);
-        //         setInputCourse("");
-            
-        // }   else { 
-        //         alert("Course does not exist");
-            // }
         }
     }
 
@@ -142,12 +143,11 @@ function Profile() {
                         Profile
                     </div> 
                     
-                    {/* Form */}
                     <div className="py-5 mt-4 px-5 flex flex-col items-center w-[360px] rounded-[16px] shadow-[0px_4px_24px_-1px_#00000033] backdrop-blur-2xl backdrop-brightness-[100%] [-webkit-backdrop-filter:blur(40px)_brightness(100%)] [background:linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(217,217,217,0.1)_100%)]">                       
                         <form className="w-full h-full flex flex-col items-center max-h-[500px] overflow-y-scroll overflow-x-hidden">
                             <Input onChange={handleChange} className="w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Name" id="name" value={name}/>
                             <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="email" label="Email" id="email" value={email}/>
-                            <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Year" id="year" value={year}/>
+                            <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="number" label="Year" id="year" value={year}/>
                             <Input onChange={handleChange} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Major" id="major" value={major}/>
                             <div>
                                 <Input onChange={handleChange} onKeyDown={handleCourseKeyDown} className="mt-4 w-[320px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="text" label="Courses" id="courses" value={inputCourse}/>
@@ -172,7 +172,6 @@ function Profile() {
                         </Button>
                     </div>   
 
-                    {/* Logout */}
                     <Button onClick={logOut} radius="md" variant="bordered" className="mt-7 w-[130px] h-[40px] opacity-100 border-[#00274c] [font-family:'Inter-Bold',Helvetica] font-normal text-[#00274c] text-[12px] tracking-[0] leading-[normal]">
                         Logout
                     </Button>

@@ -26,6 +26,13 @@ export function MatchDetails() {
         return result;
     }
 
+    const separate = (inputCourse) => {
+        let value = inputCourse.trim();
+        let course = value.replace(/[^a-zA-Z]/g, '').toUpperCase()
+        let id = value.replace(/[^0-9]/g, '')
+        return `${course} ${id}`
+    }
+
     return (
         <>
             <div className="w-screen h-screen gradient">
@@ -76,7 +83,7 @@ export function MatchDetails() {
                                     </div>
                                     <div className="flex flex-row flex-wrap gap-x-2">
                                         {user.classes.map((course, index) => (
-                                            <Chip key={index} className="mt-2 opacity-70 bg-[#408BFC] text-white">{course}</Chip>
+                                            <Chip key={index} className="mt-2 opacity-70 bg-[#408BFC] text-white">{separate(course)}</Chip>
                                         
                                         ))}
                                     </div>

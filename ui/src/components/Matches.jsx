@@ -50,7 +50,7 @@ function Matches() {
 
                 <div className="w-full h-full">
                     <div className="relative z-[100] pt-11 mb-4 text-center text-[24px]">Matches</div>
-                    <div className="z-10 grid grid-cols-1 gap-2 overflow-y-scroll overflow-x-hidden px-4">
+                    <div className="z-10 grid grid-cols-1 gap-2 max-h-[680px] overflow-y-scroll overflow-x-hidden px-4">
                         {
                             users && users.map((item, index) => (
                                     <Card key={index} className="relative z-[100] shadow-sm rounded-2xl px-2 py-3 [background:linear-gradient(180deg,rgba(255,255,255,0.6)_0%,rgba(217,217,217,0.1)_100%)]">

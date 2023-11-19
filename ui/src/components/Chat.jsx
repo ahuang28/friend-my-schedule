@@ -42,10 +42,10 @@ function Chat() {
                         Chats
                     </div>
 
-                    <div>
+                    <div className=" w-full max-h-[680px] overflow-y-scroll overflow-x-hidden">
                         {
                             users && users.map((item, index) => (
-                                <Card key={index} shadow="none" radius="none" className="px-2 py-1 w-[350px] bg-opacity-0 border-none grid grid-cols-1 gap-1 overflow-y-auto">
+                                <Card key={index} shadow="none" radius="none" className="px-2 py-1 w-full bg-opacity-0 border-none grid grid-cols-1 gap-1">
                                     <CardHeader className="flex flex-row justify-between">
                                         <div className="flex flex-row">
                                             <Avatar></Avatar>
@@ -55,7 +55,7 @@ function Chat() {
                                             </div>
                                         </div>
                                     </CardHeader>
-                                    <img className="w-[240px] ml-16 z-10" alt="line" src="/src/assets/line.svg" />
+                                    <img className="w-[300px] ml-16 z-10" alt="line" src="/src/assets/line.svg" />
                                 </Card>
                             ))
                         }

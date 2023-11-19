@@ -8,7 +8,6 @@ import MatchDetails from "./components/MatchDetails"
 import Error from "./components/Error"
 
 function App() {
-
   return (
     <>
 
