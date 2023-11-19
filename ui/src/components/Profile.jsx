@@ -71,7 +71,7 @@ function Profile() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        formData.courses = courses;
+        formData.classes = courses;
         formData.interests = interests;
         console.log(formData);
 
