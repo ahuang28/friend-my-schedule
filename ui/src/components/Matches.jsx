@@ -19,7 +19,11 @@ function Matches() {
         api.patch("/users/655945feacec3f11232373be/match/fetch").then((data) => {
             // navigate("/matches", { replace: true })
             console.log(data.data)
-            setUsers(data.data)
+            const wry = []
+            data.data.forEach(user => {
+                if (user.percentage > 0) wry.push(user)
+            })
+            setUsers(wry)
             return
         }).catch(() => {
             console.log("Error")
@@ -58,7 +62,7 @@ function Matches() {
                                             <div className="flex flex-row">
                                                 <Avatar></Avatar>
                                                 <div className="pl-4">
-                                                    <div className="text-[#00284c] [font-family:'Inter'] font-bold tracking-wide">{item.user.name}</div>
+                                                    <div className="text-[#00284c] [font-family:'Inter'] font-bold tracking-wide">{item.user.name} ({Math.round(item.percentage * 100)}%)</div>
                                                     <div className="text-[#00284c] [font-family:'Inter'] text-[12px] tracking-wide">U{item.user.year} {camelCase(item.user.major)}</div>
                                                 </div>
                                             </div>

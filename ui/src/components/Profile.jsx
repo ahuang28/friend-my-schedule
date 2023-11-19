@@ -20,6 +20,13 @@ function Profile() {
         major: "",
     });
 
+    const separate = (inputCourse) => {
+        let value = inputCourse.trim();
+        let course = value.replace(/[^a-zA-Z]/g, '').toUpperCase()
+        let id = value.replace(/[^0-9]/g, '')
+        return `${course} ${id}`
+    }
+
     const { name, email, year, major } = formData;
 
     const [inputInterest, setInputInterest] = useState("");
@@ -35,9 +42,13 @@ function Profile() {
             console.log(user)
             formData.name = user.name
             formData.email = user.email
-            formData.year = user.year
+            formData.year = user.year.toString()
             formData.major = user.major
-            setCourses(user.classes ? user.classes : [])
+            const classes = []
+            for (let i = 0; i < user.classes.length; i++) {
+                classes.push(separate(user.classes[i]))
+            }
+            setCourses(user.classes ? classes : [])
             setInterests(user.interests ? user.interests : [])
             setFormData(formData)
             
