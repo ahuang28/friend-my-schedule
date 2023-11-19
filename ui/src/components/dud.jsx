@@ -176,3 +176,83 @@ export const Profile = () => {
     </div>
   );
 };
+
+import React from "react";
+
+export const Chat = () => {
+  return (
+    <div className="bg-[#f8f3ed] flex flex-row justify-center w-full">
+      <div className="bg-[#f8f3ed] w-[390px] h-[844px]">
+        <div className="relative h-[844px]">
+          <img className="w-[390px] h-[591px] top-0 absolute left-0" alt="Ellipse" src="ellipse-14.svg" />
+          <img className="w-[390px] h-[679px] top-[165px] absolute left-0" alt="Ellipse" src="ellipse-13.svg" />
+          <div className="absolute w-[390px] h-[74px] top-[770px] left-0 bg-[#e2ceb599]" />
+          <img className="absolute w-[288px] h-[40px] top-[788px] left-[51px]" alt="Frame" src="frame-11.svg" />
+          <div className="absolute top-[84px] left-[161px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[24px] tracking-[0] leading-[normal]">
+            Chats
+          </div>
+          <div className="top-[152px] absolute w-[324px] h-[64px] left-[35px]">
+            <div className="w-[56px] h-[56px] top-0 bg-[#d9d9d9] rounded-[28px] absolute left-0" />
+            <img className="absolute w-[239px] h-[2px] top-[62px] left-[81px]" alt="Line" src="line-3.svg" />
+            <div className="absolute top-[9px] left-[81px] [font-family:'Inter-Bold',Helvetica] font-bold text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+              Brandon Wonga
+            </div>
+            <div className="absolute top-[34px] left-[81px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[8px] tracking-[0] leading-[normal]">
+              U4 Software Engineering
+            </div>
+          </div>
+          <div className="top-[232px] absolute w-[324px] h-[64px] left-[35px]">
+            <div className="w-[56px] h-[56px] top-0 bg-[#d9d9d9] rounded-[28px] absolute left-0" />
+            <img className="absolute w-[239px] h-[2px] top-[62px] left-[81px]" alt="Line" src="image.svg" />
+            <div className="absolute top-[9px] left-[81px] [font-family:'Inter-Bold',Helvetica] font-bold text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+              Brandon Wonga
+            </div>
+            <div className="absolute top-[34px] left-[81px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[8px] tracking-[0] leading-[normal]">
+              U4 Software Engineering
+            </div>
+          </div>
+          <div className="top-[312px] absolute w-[324px] h-[64px] left-[35px]">
+            <div className="w-[56px] h-[56px] top-0 bg-[#d9d9d9] rounded-[28px] absolute left-0" />
+            <img className="absolute w-[239px] h-[2px] top-[62px] left-[81px]" alt="Line" src="line-3-2.svg" />
+            <div className="absolute top-[9px] left-[81px] [font-family:'Inter-Bold',Helvetica] font-bold text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+              Brandon Wonga
+            </div>
+            <div className="absolute top-[34px] left-[81px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[8px] tracking-[0] leading-[normal]">
+              U4 Software Engineering
+            </div>
+          </div>
+          <div className="top-[392px] absolute w-[324px] h-[64px] left-[35px]">
+            <div className="w-[56px] h-[56px] top-0 bg-[#d9d9d9] rounded-[28px] absolute left-0" />
+            <img className="absolute w-[239px] h-[2px] top-[62px] left-[81px]" alt="Line" src="line-3-3.svg" />
+            <div className="absolute top-[9px] left-[81px] [font-family:'Inter-Bold',Helvetica] font-bold text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+              Brandon Wonga
+            </div>
+            <div className="absolute top-[34px] left-[81px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[8px] tracking-[0] leading-[normal]">
+              U4 Software Engineering
+            </div>
+          </div>
+          <div className="top-[472px] absolute w-[324px] h-[64px] left-[35px]">
+            <div className="w-[56px] h-[56px] top-0 bg-[#d9d9d9] rounded-[28px] absolute left-0" />
+            <img className="absolute w-[239px] h-[2px] top-[62px] left-[81px]" alt="Line" src="line-3-4.svg" />
+            <div className="absolute top-[9px] left-[81px] [font-family:'Inter-Bold',Helvetica] font-bold text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+              Brandon Wonga
+            </div>
+            <div className="absolute top-[34px] left-[81px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[8px] tracking-[0] leading-[normal]">
+              U4 Software Engineering
+            </div>
+          </div>
+          <div className="top-[552px] absolute w-[324px] h-[64px] left-[35px]">
+            <div className="w-[56px] h-[56px] top-0 bg-[#d9d9d9] rounded-[28px] absolute left-0" />
+            <img className="absolute w-[239px] h-[2px] top-[62px] left-[81px]" alt="Line" src="line-3-5.svg" />
+            <div className="absolute top-[9px] left-[81px] [font-family:'Inter-Bold',Helvetica] font-bold text-black text-[16px] tracking-[0] leading-[normal] whitespace-nowrap">
+              Brandon Wonga
+            </div>
+            <div className="absolute top-[34px] left-[81px] [font-family:'Inter-Regular',Helvetica] font-normal text-black text-[8px] tracking-[0] leading-[normal]">
+              U4 Software Engineering
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

@@ -56,9 +56,9 @@ function Login() {
                         <img className="w-[76px] h-[40px]" alt="Logo" src="/src/assets/logo.svg" />
                         
                         <form>
-                            <Input onChange={handleChange} className="mt-[33px] w-[274px] h-[41px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="email" label="email" id="email" value={email}/>
-                            <Input onChange={handleChange} className="mt-[10px] w-[274px] h-[41px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="password" label="Password" id="password" value={password}/>
-                            <Button onClick={handleSubmit} radius="md" className="mt-12 w-[274px] h-[41px] bg-[#00284c] opacity-1 [font-family:'Inter-Bold',Helvetica] font-bold text-white text-[12px] tracking-[0] leading-[normal]">
+                            <Input onChange={handleChange} className="mt-[33px] w-[274px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="email" label="Email" id="email" value={email}/>
+                            <Input onChange={handleChange} className="mt-[10px] w-[274px] h-[50px] bg-[#ffffffb2] rounded-[32px] opacity-70 [font-family:'Inter-Regular',Helvetica] font-normal text-[#000000a6] text-[12px] tracking-[0] leading-[normal]" type="password" label="Password" id="password" value={password}/>
+                            <Button onClick={handleSubmit} radius="md" className="mt-12 w-[274px] h-[50px] bg-[#00284c] opacity-1 [font-family:'Inter-Bold',Helvetica] font-bold text-white text-[12px] tracking-[0] leading-[normal]">
                                 Login
                             </Button>
                         </form>

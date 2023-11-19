@@ -88,6 +88,10 @@ function Profile() {
         
     }
 
+    const logOut = () => {
+        navigate("/", { replace: true })
+    }
+
     return (
         <>
             <div className="bg-white [background:linear-gradient(180deg,rgb(64,139,252)_10.95%,rgb(248,243,237)_35.73%,rgb(252.2,182.9,79.3)_67.33%,rgb(254,205,249)_100%)] w-screen h-screen">
@@ -131,7 +135,7 @@ function Profile() {
                     </div>   
 
                     {/* Logout */}
-                    <Button onClick={handleSubmit} radius="md" variant="bordered" className="mt-5 w-[150px] h-[50px] opacity-100 border-[#00274c] [font-family:'Inter-Bold',Helvetica] font-normal text-[#00274c] text-[12px] tracking-[0] leading-[normal]">
+                    <Button onClick={logOut} radius="md" variant="bordered" className="mt-7 w-[130px] h-[40px] opacity-100 border-[#00274c] [font-family:'Inter-Bold',Helvetica] font-normal text-[#00274c] text-[12px] tracking-[0] leading-[normal]">
                         Logout
                     </Button>
                 </div>
